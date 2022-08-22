@@ -33,7 +33,8 @@ export default {
             this.$store.commit('changeEditModalStatus', false)
         },
         sendNewName() {
-            this.$store.commit('editDirective', {newName: this.newName})
+            console.log(this.newName, this.oldName);
+            this.$store.commit('editDirective', {newName: this.newName ? this.newName : this.oldName})
             this.closeModal()
         }
     },
