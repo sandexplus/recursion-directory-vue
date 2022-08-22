@@ -2,9 +2,15 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 
+import directiveFolderVue from '@/components/directiveFolder';
+
 Vue.config.productionTip = false
 
-new Vue({
+const app = new Vue({
   store,
   render: h => h(App)
-}).$mount('#app')
+})
+
+Vue.component('directive-folder', directiveFolderVue)
+
+app.$mount('#app')

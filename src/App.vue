@@ -1,18 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <edit-modal></edit-modal>
+    <div class="directives">
+      <!-- put the most outer layer of directives -->
+      <directive-folder :data="item" v-for="item in directive" :key="item.id"></directive-folder>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import EditModal from './components/editModal.vue';
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    name: "App",
+    computed: {
+        directive() {
+            return this.$store.getters.getDirective;
+        }
+    },
+    components: { EditModal }
 }
 </script>
 
@@ -24,5 +29,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.directives {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 </style>
